@@ -1,0 +1,8 @@
+.list-persons {
+  display: grid;
+  font-size: 0;
+  grid-template-columns: 33% 33% 33%;
+  margin: auto;
+  width: 75%;
+  height: 100%;
+}
