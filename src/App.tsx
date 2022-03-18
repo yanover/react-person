@@ -83,7 +83,7 @@ function App() {
     <div className="App">
       <Navbar title={title}></Navbar>
       <Routes>
-        <Route path="/" element={<List List persons={personsList} />}></Route>
+        <Route path="/" element={<List persons={personsList} />}></Route>
         <Route path="/person" element={<Form />}></Route>
       </Routes>
     </div>
