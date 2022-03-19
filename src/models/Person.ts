@@ -7,4 +7,5 @@ export interface Person {
 	age: number;
 	dateOfBirth: string;
 	address: Address;
+	image: string;
 }
