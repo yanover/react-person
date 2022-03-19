@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./styles/App.css";
 import { Navbar } from "./components/Navbar";
 import { List } from "./components/List";
 import { Form } from "./components/Form";
 import { Person } from "./models/Person";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 // Declaring constants
 const title = "Personnes";
 
 // temporary implementation
-const personsList: Person[] = [
+/* const personsList: Person[] = [
 	{
 		id: "1",
 		lastname: "Doe",
@@ -77,25 +77,38 @@ const personsList: Person[] = [
 		},
 	},
 ];
+ */
 
 const App = () => {
-	let state = {
-		loading: true,
-	};
+	const [state, setState] = React.useState(false);
+	const [persons, setPersons] = React.useState(null);
 
-	let persons = async () => {
-		// API url
-		const url = "https://api.randomuser.me/";
-		// Async call to the API
-		const response = await fetch(url);
-		const data = await response.json();
-		console.log(data);
-	};
+	useEffect(() => {
+		async function fetchData() {
+			// API url
+			const url = "https://randomuser.me/api/?results=5";
+			// Async call to the API
+			const response = await fetch(url);
+			const data = await response.json();
+			// Set state
+			setState(true);
+			// Set Persons
+			setPersons(data.results);
+			console.log(data.results);
+		}
+		fetchData();
+	}, []);
 
 	return (
 		<div className="App">
 			<Navbar title={title}></Navbar>
-			<List persons={personsList}></List>
+			<Routes>
+				<Route
+					path="/"
+					element={<List persons={persons} state={state} />}
+				></Route>
+				<Route path="/person" element={<Form />}></Route>
+			</Routes>
 		</div>
 	);
 };
