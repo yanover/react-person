@@ -15,7 +15,7 @@ export const List = ({
 			{state && persons ? (
 				<div className="list-persons">
 					{persons.map((person: Person) => {
-						return <Item key={person.id.value} {...person}></Item>;
+						return <Item key={person.id} {...person}></Item>;
 					})}
 				</div>
 			) : (

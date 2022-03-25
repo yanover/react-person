@@ -1,7 +1,7 @@
 import { Address } from "./Address";
 
 export interface Person {
-	id: {
+  /* 	id: {
 		name: string;
 		value: string;
 	};
@@ -23,5 +23,10 @@ export interface Person {
 		large: string;
 		medium: string;
 		thumbnail: string;
-	};
+	}; */
+
+  id: string;
+  username: string;
+  age: number;
+  job: string;
 }
